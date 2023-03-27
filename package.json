@@ -1,5 +1,5 @@
 {
-  "name": "atlas-guide-custom",
+  "name": "guide",
   "version": "2.3.5",
   "license": "MIT",
   "description": "Atlas is living style-guides & pattern library static site generator with extensive CSS monitoring and components info that could be used virtually with any scss/css project",
@@ -63,10 +63,6 @@
     "debug": "node --nolazy --inspect-brk=9229 ./bin/atlas-guide-custom --build=.atlasrc.current.json",
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:nfxpnk/atlas-guide-custom.git"
   },
   "author": "nfxpnk, base dimanech/atlas-guide",
   "snyk": true
