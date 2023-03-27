@@ -38,7 +38,7 @@ Debug with WebStorm. Add this configuration to Run | Edit Configuration... > Nod
 ```
 Node parameters:        --inspect
 Working directory:      <you dir>
-JavaScript file:        ./bin/atlas-guide-custom.js
+JavaScript file:        ./bin/atlas-guide.js
 Application parameters: --build
 ```
 

@@ -17,7 +17,7 @@ if (fs.existsSync(currentConfig) === false) {
 
 log('Current config file is: ' + c.cyan(currentConfig));
 
-const atlas = require('./app/atlas-guide-custom.js').withConfig(currentConfig);
+const atlas = require('./app/atlas-guide.js').withConfig(currentConfig);
 const config = require(currentConfig);
 
 // Atlas styles source
