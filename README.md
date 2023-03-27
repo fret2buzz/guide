@@ -38,7 +38,7 @@ Support regular markdown files in components folders and process it as guideline
 ### Installing
 
 ```
-npm install nfxpnk/atlas-guide-custom
+npm install nfxpnk/atlas-guide
 ```
 
 ### Configuring
@@ -113,8 +113,8 @@ See example guideline page or this repo gulp to get the idea how live reload and
 ### API
 
 ```js
-const atlas = require('atlas-guide-custom').withConfig('./project/root/path/to/config.json');
-// or atlas = require('atlas-guide-custom').withConfig({ rawConfigObject });
+const atlas = require('atlas-guide').withConfig('./project/root/path/to/config.json');
+// or atlas = require('atlas-guide').withConfig({ rawConfigObject });
 atlas.build().then(...); // build all guide files without reports. Returns promise.
 atlas.build('/absolute/path/to/changed/file.scss').then(...); // compile only particular file, if it marked as documented in project tree. Returns promise.
 atlas.buildAll().then(...); // compile all guide pages and reports. Returns promise.
@@ -125,7 +125,7 @@ Use `atlas.build()` for incremental development builds, where it is not required
 ### CLI
 
 ```shell
-Usage: atlas-guide-??? [OPTION]
+Usage: atlas-guide [OPTION]
 
 Options:            
   -b, --build=FILE           build all atlas pages, followed with config '--build=./path/to/config.json'
@@ -150,13 +150,13 @@ Minimal configuration:
 You could place it wherever you want and target with:
 
 ```js
-const atlas = require('atlas-guide-custom').withConfig('./from/project/root/path/to/my/config.json');
+const atlas = require('atlas-guide').withConfig('./from/project/root/path/to/my/config.json');
 ```
 
 or with rawConfig object if you call atlas from js:
 
 ```js
-const atlas = require('atlas-guide-custom').withConfig({
+const atlas = require('atlas-guide').withConfig({
     guideSrc: 'path/to/yours/scss/',
     guideDest: 'path/to/your/static/folder/for/guide/',
     cssSrc: 'assets/css/'
@@ -195,7 +195,7 @@ than you could build guide like this:
 
 ```js
 const pkg = require('package.json');
-const atlasGuide = require('atlas-guide-custom');
+const atlasGuide = require('atlas-guide');
 
 const buildBrandOne = atlasGuide.withConfig(pkg.brands.one).buildAll().then(...);
 const buildBrandAnother = atlasGuide.withConfig(pkg.brands.another).buildAll().then(...);
@@ -433,7 +433,7 @@ Simply put regular markdown file to components tree and they automatically becom
 Regular development flow could be organized in this way – build all guide pages on start and incrementally rebuild pages on file changes:
 
 ```js
-const atlas = require('atlas-guide-custom').withConfig({config: 'here'});
+const atlas = require('atlas-guide').withConfig({config: 'here'});
 atlas.build().then(...); // build all guide files without reports
 
 // watch for changes, get changed file path and build needed page:
@@ -450,7 +450,7 @@ Due to time efforts reports not generated in regular flow. To generate reports y
 or in JS:
 
 ```js
-const atlas = require('atlas-guide-custom').withConfig({config: 'here'});
+const atlas = require('atlas-guide').withConfig({config: 'here'});
 atlas.buildAll().then(...); // compile all components, guidelines and reports
 ```
 
