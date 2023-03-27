@@ -104,7 +104,7 @@ body {
 	padding: 0;
 }
 .atlas-p a {
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 	text-decoration: underline;
 	word-break: break-word;
 }
@@ -254,7 +254,7 @@ body {
 	width: 100%;
 }
 .atlas-title__anchor:active {
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 }
 .atlas-title__anchor svg {
 	height: 14px;
@@ -325,7 +325,7 @@ body {
 	text-transform: capitalize;
 }
 .atlas-overline svg {
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 	height: 24px;
 	position: relative;
 	top: 4px;
@@ -360,13 +360,13 @@ body {
 	display: block;
 }
 .atlas-toc__ln {
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 	display: block;
 	text-decoration: underline;
 	text-overflow: ellipsis;
 }
 .atlas-toc__ln:hover, .atlas-toc__ln:focus {
-	color: #195cae;
+	color: #0a0e10;
 }
 .atlas-toc__ln:active {
 	color: hsl(38, 92%, 60%);
@@ -433,7 +433,7 @@ body {
 	white-space: nowrap;
 }
 .atlas-component-aside__list-item svg {
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 	position: relative;
 	top: 2px;
 	vertical-align: text-bottom;
@@ -448,7 +448,7 @@ body {
 	width: 50%;
 }
 .atlas-info-digit__digit {
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 	font-size: 48px;
 	font-weight: normal;
 	line-height: 1;
@@ -464,7 +464,7 @@ body {
 .atlas-info-digit__popup {
 	background: rgba(255, 255, 255, 0.97);
 	border: 1px solid #e0e0e0;
-	border-left: 7px solid hsl(213, 75%, 54%);
+	border-left: 7px solid #263740;
 	border-radius: 4px;
 	bottom: 7px;
 	box-shadow: 0 0 20px -4px rgba(0, 0, 0, 0.3);
@@ -477,7 +477,7 @@ body {
 }
 .atlas-info-digit__popup::before {
 	border-bottom: 7px solid transparent;
-	border-right: 7px solid hsl(213, 75%, 54%);
+	border-right: 7px solid #263740;
 	border-top: 7px solid transparent;
 	bottom: 10px;
 	content: "";
@@ -543,7 +543,7 @@ body {
 	width: 33.3333333333%;
 }
 .atlas-info-list__total {
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 	font-size: 32px;
 	font-weight: normal;
 	padding-right: 5px;
@@ -912,7 +912,7 @@ body {
 	outline: none;
 }
 .atlas-copier:hover .atlas-copier__text {
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 }
 
 /* TODO: Temp location, move to some file.scss */

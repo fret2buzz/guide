@@ -158,7 +158,7 @@
 }
 .atlas-style-motion__ball {
 	animation-play-state: paused !important; /* stylelint-disable-line */
-	background-color: hsl(213, 75%, 54%);
+	background-color: #263740;
 	border-radius: 100%;
 	height: 10px;
 	left: 0;
@@ -293,7 +293,7 @@
 	display: flex;
 }
 .atlas-style-breaks__item::before {
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 	content: counter(breaks);
 	display: inline-block;
 	font-family: "Arial", "FreeSans", sans-serif;
@@ -319,7 +319,7 @@
 	stroke: hsl(0, 0%, 80%);
 }
 .atlas-style-breaks-graph .atlas-tick-hints text {
-	fill: hsl(213, 75%, 54%);
+	fill: #263740;
 	font-family: "Consolas", "Monaco", "Andale Mono", "Ubuntu Mono", monospace;
 }
 /*# sourceMappingURL=dev_atlas-style.css.map */

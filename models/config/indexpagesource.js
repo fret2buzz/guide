@@ -6,7 +6,7 @@ const log = require('fancy-log');
 const c = require('ansi-colors');
 
 function getIndexPageSource(projectRoot, guideSrc, indexPageSource) {
-    const inConfig = indexPageSource ? path.join(projectRoot, indexPageSource) : '';
+    const inConfig = indexPageSource ? indexPageSource : '';
     const inGuide = path.join(guideSrc, 'README.md');
     const inProject = path.join(projectRoot, 'README.md');
     let indexSrc;

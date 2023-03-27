@@ -61,7 +61,7 @@
 	width: 16px;
 }
 .js-found .atlas-search__icon {
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 }
 .atlas-search__clear {
 	border: none;
@@ -80,13 +80,13 @@
 }
 .atlas-search__clear svg {
 	display: block;
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 }
 .atlas-search__clear:hover svg {
 	color: #787878;
 }
 .atlas-search__clear:focus svg {
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 }
 .atlas-search__clear:active svg {
 	color: #5e5e5e;
@@ -126,7 +126,7 @@
 	right: -1px;
 }
 .atlas-aside-ctrl:hover, .atlas-aside-ctrl:focus {
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 }
 .js-aside-panel-hidden .atlas-aside-ctrl {
 	cursor: pointer;
@@ -237,7 +237,7 @@
 	text-decoration: none;
 }
 .atlas-nav__ln:active {
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 }
 .atlas-nav__ln.js-current-page {
 	background-color: hsl(0, 0%, 88%);
@@ -252,7 +252,7 @@
 	width: 18px;
 }
 .atlas-nav__ln._category svg {
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 }
 .atlas-nav__ln._deprecated {
 	text-decoration: line-through;
@@ -319,7 +319,7 @@
 	color: black;
 }
 .js-found .atlas-nav__ln.js-relevant:active {
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 }
 .js-found .atlas-nav__sub-nav,
 .js-found .atlas-nav__ln._category {
@@ -344,7 +344,7 @@
 	align-items: center;
 	background: rgba(255, 255, 255, 0.96);
 	bottom: 0;
-	color: hsl(213, 75%, 54%);
+	color: #263740;
 	display: none;
 	justify-content: center;
 	left: 0;
