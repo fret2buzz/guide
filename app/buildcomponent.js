@@ -1,5 +1,8 @@
 'use strict';
 
+const fs = require('fs');
+const mustache = require('mustache');
+
 let cachedContent = {};
 const isContentChanged = (url, content) => {
     if (url === undefined) {
@@ -64,7 +67,37 @@ module.exports = function(atlasConfig, projectTree, writePage) {
             });
         }
 
+        let tpl = `
+const asideNav = \`;;;;;;\`;
+
+document.addEventListener('DOMContentLoaded', function () {
+    const asideNavContainer = document.getElementById('js-atlas-navigation');
+    asideNavContainer.innerHTML = asideNav;
+});
+`;
+
         traverseDocumentedTree(projectTree.subPages, source);
+        console.log('Writing navigation file....');
+
+        let js = mustache.render(
+            fs.readFileSync(atlasConfig.partials.navigation, 'utf8'),
+            projectTree,
+            {
+                "navigation": fs.readFileSync(atlasConfig.partials.navigation, 'utf8')
+            }
+        );
+
+        js = tpl.replace(';;;;;;', js);
+
+        fs.writeFileSync(
+            atlasConfig.guideDest + 'nav.js',
+            js,
+            error => {
+                if (error) {
+                    console.log(error);
+                }
+            }
+        );
 
         return Promise.all(docSet.map(writePage));
     }
