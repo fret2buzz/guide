@@ -64,6 +64,6 @@
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect"
   },
-  "author": "nfxpnk, base dimanech/atlas-guide",
+  "author": "fret2buzz, base dimanech/atlas-guide",
   "snyk": true
 }
