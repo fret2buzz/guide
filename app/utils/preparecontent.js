@@ -28,14 +28,6 @@ module.exports = function(atlasConfig, projectTree) {
             case 'styleguide':
                 content = styleguide(projectConstants, component);
                 break;
-            case 'icons':
-                const iconsJson = path.join(atlasConfig.guideSrc, 'icons.json');
-                let icons = {};
-                if (fs.existsSync(iconsJson)) {
-                    icons = JSON.parse(fs.readFileSync(iconsJson, 'utf8'));
-                }
-                content = icons;
-                break;
             case 'component':
             case 'container':
                 break;

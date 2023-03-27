@@ -5,15 +5,14 @@
     const navigationContent = document.getElementById('js-atlas-aside-content');
 
     function menuCollapse(ev) {
-        if (!ev.target.classList.contains('_category')) {
-            return;
-        }
-        ev.preventDefault();
+        if (ev.target.classList.contains('_category')) {
+            ev.preventDefault();
 
-        if (ev.target.classList.contains('js-collapsed')) {
-            ev.target.classList.remove('js-collapsed');
-        } else {
-            ev.target.classList.add('js-collapsed');
+            if (ev.target.classList.contains('js-collapsed')) {
+                ev.target.classList.remove('js-collapsed');
+            } else {
+                ev.target.classList.add('js-collapsed');
+            }
         }
     }
 

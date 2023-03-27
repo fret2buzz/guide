@@ -38,7 +38,7 @@ function removeEmptyCategories(collection) {
 const isExcludedFile = name => excludedSassFiles.test(name);
 const isExcludedDirectory = name => excludedDirs.test(name);
 
-function pageConfig(id, title, target, isDocumented, isDocs) {
+function pageConfig(id, title, target, isDocs) {
     return {
         id: id,
         title: title,
@@ -48,7 +48,6 @@ function pageConfig(id, title, target, isDocumented, isDocs) {
         target: guideDest + id + '.html',
         template: isDocs ? templates.docs : templates.component,
         isDeprecated: /deprecated/.test(title),
-        noDocumentation: !isDocumented,
         subPages: []
     };
 }
@@ -115,16 +114,16 @@ function makeProjectTree(atlasConfig) {
                 if (isSass) {
                     docSet.coverage.all++;
                 }
-                if (isSass && !isExcludedFile(name) && categoryName !== '') {
+                if (isSass && isDocumented(target) && !isExcludedFile(name)) {
                     docSet.coverage.covered++;
-                    const title2 = path.basename(name, '.scss').replace(/^_/i, '');
-                    const id = categoryName + title2;
-                    config.push(pageConfig(id, title, target, isDocumented(target), false));
+                    const title = path.basename(name, '.scss').replace(/^_/i, '');
+                    const id = categoryName + title;
+                    config.push(pageConfig(id, title, target, false));
                 }
                 if (path.extname(name) === '.md' && !/^README\.md/.test(categoryName + name)) { // this is hacky way
                     // to exclude root README.md
                     const id = categoryName + 'doc-' + path.basename(name, '.md');
-                    config.push(pageConfig(id, title, target, true, true));
+                    config.push(pageConfig(id, title, target, true));
                 }
             } else if (resource.isDirectory() && !isExcludedDirectory(name)) {
                 config.push(categoryConfig(name));
