@@ -23,6 +23,7 @@ window.onload = function() {
             asidePanel.classList.remove(hasResults);
             links.forEach(link => link.classList.remove(isRelevant));
             searchField.value = '';
+            window.sessionStorage.setItem('searchTerm', '');
         }
 
         function search(event) {
