@@ -26,11 +26,6 @@
             <div class="atlas-nav" role="list" id="js-atlas-navigation">
                 &nbsp;
             </div>
-            <script>
-                const atlasContentPosition = window.sessionStorage && (window.sessionStorage.getItem('navigationScroll')) ?
-                    window.sessionStorage.getItem('navigationScroll') : '';
-                document.getElementById('js-atlas-aside-content').scrollTo(0, atlasContentPosition);
-            </script>
         </div>
         <div class="atlas-aside__footer">
             {{> copyright}}
