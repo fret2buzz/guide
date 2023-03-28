@@ -2,6 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     (function () {
+        let end = null;
         const navigation = document.getElementById('js-atlas-navigation');
         const navigationContent = document.getElementById('js-atlas-aside-content');
 
@@ -17,6 +18,19 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
+        function findParent(element) {
+            if (!element || end) {
+                return false;
+            }
+
+            end = element.classList.contains('atlas-nav');
+
+            if (element.classList.contains('atlas-nav__item_category')) {
+                element.querySelector('._category').classList.remove('js-collapsed');
+            }
+            findParent(element.parentElement);
+        }
+
         function highlightCurrentPage() {
             const location = window.location.href;
             const currentFile = location.split('/').pop().replace('.html', '');
@@ -25,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
             linkCurrent.classList.add('js-current-page');
+            findParent(linkCurrent);
 
             const storedValue = window.sessionStorage ? window.sessionStorage.getItem('navigationScroll') : null;
 

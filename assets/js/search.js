@@ -1,12 +1,12 @@
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function () {
+window.onload = function() {
     (function() {
         const asidePanel = document.getElementById('js-atlas-aside');
         const searchField = document.getElementById('js-atlas-search');
         const searchClearBtn = document.getElementById('js-atlas-search-clear');
         const links = document.querySelectorAll('.js-atlas-nav-ln');
-
+        let timeoutId = null;
         const waitForSearch = 'js-searching';
         const hasResults = 'js-found';
         const isRelevant = 'js-relevant';
@@ -26,11 +26,32 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         function search(event) {
-            const term = event.target.value;
-            if (!term) {
-                clearSearch();
-            }
+            let searchFunc = debounce(() => {
+                console.log('search');
+                const term = event.target.value;
+                window.sessionStorage.setItem('searchTerm', term);
+                if (!term) {
+                    clearSearch();
+                }
 
+                runSearch(term);
+
+            }, 300);
+
+            searchFunc();
+        }
+
+        function debounce(func, delay) {
+            return () => {
+                const args = arguments;
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    func(args);
+                }, delay);
+            }
+        }
+
+        function runSearch(term) {
             links.forEach(link => {
                 if (link.getAttribute('href') === '') {
                     return;
@@ -51,5 +72,13 @@ document.addEventListener('DOMContentLoaded', function () {
         searchField.addEventListener('focus', startSearch);
         searchField.addEventListener('blur', finishSearch);
         searchClearBtn.addEventListener('click', clearSearch);
+
+        const storedValue = window.sessionStorage ? window.sessionStorage.getItem('searchTerm') : null;
+        console.log(storedValue);
+        if (storedValue) {
+            searchField.value = storedValue;
+            runSearch(storedValue);
+        }
+
     }());
-});
+}
