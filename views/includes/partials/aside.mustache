@@ -31,24 +31,6 @@
                     window.sessionStorage.getItem('navigationScroll') : '';
                 document.getElementById('js-atlas-aside-content').scrollTo(0, atlasContentPosition);
             </script>
-
-            <script>
-                const themeRadios = document.querySelectorAll('.atlas-theme-switcher__radio');
-                const body = document.body;
-                let currentTheme = null;
-
-                themeRadios.forEach(radio => {
-                    radio.addEventListener('change', event => {
-                        const theme = event.target.value;
-
-                        if (currentTheme) {
-                            body.classList.remove(currentTheme);
-                        }
-                        currentTheme = theme;
-                        body.classList.add(theme);
-                    });
-                });
-            </script>
         </div>
         <div class="atlas-aside__footer">
             {{> copyright}}
