@@ -75,7 +75,7 @@ window.onload = function() {
         searchClearBtn.addEventListener('click', clearSearch);
 
         const storedValue = window.sessionStorage ? window.sessionStorage.getItem('searchTerm') : null;
-        console.log(storedValue);
+
         if (storedValue) {
             searchField.value = storedValue;
             runSearch(storedValue);

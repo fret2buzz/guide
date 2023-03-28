@@ -247,12 +247,16 @@
 }
 .atlas-nav__ln svg {
 	height: 18px;
+	min-width: 18px;
 	pointer-events: none;
 	vertical-align: text-bottom;
 	width: 18px;
 }
 .atlas-nav__ln._category svg {
 	color: #263740;
+}
+.atlas-nav__ln.js-collapsed._category svg {
+	color: hsl(0, 0%, 70%);
 }
 .atlas-nav__ln._deprecated {
 	text-decoration: line-through;
