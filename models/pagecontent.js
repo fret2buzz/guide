@@ -145,6 +145,7 @@ function mdImport(fileURL, options) {
             modifierCode[1] = modifierCode[1].trim();
 
             let modifiers = modifierCode[1].split('\n');
+
             let html = modifierCode[2].trim();
 
             modifiers = modifiers.map(e => {
@@ -153,7 +154,12 @@ function mdImport(fileURL, options) {
                 let className = e[0];
                 e[0] = e[0].replace(/\./g, '');
                 e[0] = e[0].replace(/:/g, 'pseudo-class-');
-                return {modifier: e[0], class: className, name: e[1], html: html.replace(/\[modifier class\]/gm, e[0])};
+                return {
+                    modifier: e[0],
+                    class: className,
+                    name: e[1],
+                    html: html.replace(/\[modifier class\]/gm, e[0])
+                };
             });
 
             for (let i = 0; i < modifiers.length; ++i) {
@@ -192,7 +198,7 @@ function mdImport(fileURL, options) {
 
         codeItemCount += 1;
 
-        if (exampleArray.length > 1) {
+        if (exampleArray.length >= 1) {
             return exampleMarkupArray;
         } else if (language === 'html_example') {
             return exampleMarkup;
