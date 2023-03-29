@@ -8,12 +8,17 @@ let excludedDirs;
 let guideDest;
 let templates;
 
-function isDocumented(filePath) {
-    const file = fs.readFileSync(filePath, 'utf8');
-    const docComment = /\/\*md(\r\n|\n)(((\r\n|\n)|.)*?)\*\//g;
-    const exec = docComment.exec(file);
+function isDocumented(filePath, arr) {
+    // const file = fs.readFileSync(filePath, 'utf8');
+    // const docComment = /\/\*md(\r\n|\n)(((\r\n|\n)|.)*?)\*\//g;
+    // const exec = docComment.exec(file);
 
-    return !!(exec !== null && exec[2].trim());
+    // return !!(exec !== null && exec[2].trim());
+    if (!arr || !filePath) {
+        return false;
+    }
+
+    return arr.includes(filePath.split('.')[0]);
 }
 
 /**
@@ -38,7 +43,7 @@ function removeEmptyCategories(collection) {
 const isExcludedFile = name => excludedSassFiles.test(name);
 const isExcludedDirectory = name => excludedDirs.test(name);
 
-function pageConfig(id, title, target, isDocs) {
+function pageConfig(id, title, target, noDocumentation, isDocs) {
     return {
         id: id,
         title: title,
@@ -48,6 +53,7 @@ function pageConfig(id, title, target, isDocs) {
         target: guideDest + id + '.html',
         template: isDocs ? templates.docs : templates.component,
         isDeprecated: /deprecated/.test(title),
+        noDocumentation: noDocumentation,
         subPages: []
     };
 }
@@ -88,7 +94,7 @@ function makeProjectTree(atlasConfig) {
     let docSet = {
         'coverage': {
             'all': 0,
-            'covered': 0
+            'notcovered': 0
         },
         'subPages': []
     };
@@ -100,9 +106,8 @@ function makeProjectTree(atlasConfig) {
      * @param {string} categoryName - category name that will be used as component prefix. 'atlas' as start point,
      * directory name in all future cases.
      */
-    function findComponents(url, config, categoryName) {
+    function findComponents(url, config, categoryName, mdFiles) {
         const dir = fs.readdirSync(url);
-
         dir.forEach(res => {
             let name = res;
             let target = path.join(url, name);
@@ -114,26 +119,46 @@ function makeProjectTree(atlasConfig) {
                 if (isSass) {
                     docSet.coverage.all++;
                 }
-                if (isSass && isDocumented(target) && !isExcludedFile(name)) {
-                    docSet.coverage.covered++;
-                    const title = path.basename(name, '.scss').replace(/^_/i, '');
-                    const id = categoryName + title;
-                    config.push(pageConfig(id, title, target, false));
+
+                if (isSass && !isDocumented(target, mdFiles) && !isExcludedFile(name)) {
+                    docSet.coverage.notcovered++;
+                    config.push(pageConfig(false, title, target, true, false));
                 }
                 if (path.extname(name) === '.md' && !/^README\.md/.test(categoryName + name)) { // this is hacky way
                     // to exclude root README.md
                     const id = categoryName + 'doc-' + path.basename(name, '.md');
-                    config.push(pageConfig(id, title, target, true));
+                    config.push(pageConfig(id, title, target, false, true));
                 }
             } else if (resource.isDirectory() && !isExcludedDirectory(name)) {
                 config.push(categoryConfig(name));
-                findComponents(target, config[config.length - 1].subPages, categoryName + name + '-');
+                findComponents(target, config[config.length - 1].subPages, categoryName + name + '-', mdFiles);
             }
         });
     }
 
-    findComponents(atlasConfig.guideSrc, docSet.subPages, '');
+    let mdFiles = [];
+    function findMd(url) {
+        const dir = fs.readdirSync(url);
+
+        dir.forEach(res => {
+            let target = path.join(url, res);
+            let resource = fs.statSync(target);
+
+            if (resource.isFile()) {
+                if (path.extname(res) === '.md') {
+                    mdFiles.push(target.split('.')[0]);
+                }
+            } else if (resource.isDirectory() && !isExcludedDirectory(res)) {
+                findMd(target);
+            }
+        });
+    }
+
+    findMd(atlasConfig.guideSrc);
+
+    findComponents(atlasConfig.guideSrc, docSet.subPages, '', mdFiles);
     removeEmptyCategories(docSet.subPages);
+    console.log(docSet.coverage.all,' : ', docSet.coverage.all - docSet.coverage.notcovered)
 
     if (atlasConfig.additionalPages.length) {
         atlasConfig.additionalPages.forEach(page => docSet.subPages.unshift(page));
