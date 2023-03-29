@@ -353,8 +353,24 @@ body {
 }
 
 .atlas-toc {
-	padding-top: 40px;
+	padding-top: 30px;
 	font-size: 13px;
+}
+.atlas-toc__info {
+	border: 1px solid hsl(0, 0%, 80%);
+	border-radius: 5px;
+	display: flex;
+	flex-flow: column nowrap;
+	font-size: 14px;
+	gap: 10px;
+	margin-bottom: 30px;
+	padding: 10px;
+}
+.atlas-toc__path {
+	font-family: "Consolas", "Monaco", "Andale Mono", "Ubuntu Mono", monospace;
+}
+.atlas-toc__date {
+	font-family: "Consolas", "Monaco", "Andale Mono", "Ubuntu Mono", monospace;
 }
 .atlas-toc__item {
 	display: block;

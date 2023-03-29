@@ -17,11 +17,13 @@ module.exports = function(atlasConfig, projectTree) {
         let tableOfContent;
         let stat;
         let page;
+        let path;
 
         if (component.src !== '') { // could be stat pages or custom defined file
             page = renderedPageContent(component.src, {'title': component.title});
             content = page.content;
             tableOfContent = page.toc;
+            path = component.src.split('\\scss\\')[1];
         }
 
         switch (component.type) {
@@ -40,7 +42,8 @@ module.exports = function(atlasConfig, projectTree) {
 
         return {
             documentation: content,
-            toc: tableOfContent
+            toc: tableOfContent,
+            path: path
         };
     }
 
