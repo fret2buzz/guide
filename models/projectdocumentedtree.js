@@ -50,7 +50,7 @@ function pageConfig(id, title, target, noDocumentation, isDocs) {
         type: isDocs ? 'guide' : /^l-/i.test(title) ? 'container' : 'component', // TODO: configuration
         icon: isDocs ? 'markdown-16' : /^l-/i.test(title) ? 'file-16' : 'file-code-16', // TODO: configuration
         src: target,
-        target: guideDest + id + '.html',
+        target: id ? guideDest + id + '.html' : false,
         template: isDocs ? templates.docs : templates.component,
         isDeprecated: /deprecated/.test(title),
         noDocumentation: noDocumentation,

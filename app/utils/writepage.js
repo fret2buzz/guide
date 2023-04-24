@@ -42,6 +42,10 @@ module.exports = function init(atlasConfig, subPages) {
      * @return {Promise<string>}
      */
     const writePage = function(config) {
+        if (!config.target) {
+            return false;
+        };
+
         return new Promise(
             (resolve, reject) => fs.writeFile(
                 config.target,
