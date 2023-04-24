@@ -5,8 +5,6 @@ Atlas is living style-guide, pattern library, guidelines and documentation stati
 It is opinionated. Because it is, probably, impossible to cover all cases in CSS/Sass.
 It designed primarily as "style-guide driven development" tool with focus on splited files approach and incapsulated components with normative Sass imports structure.
 
-* [Live example](https://fret2buzz.github.io/???/)
-
 ## Features
 
 * blazing fast thanks to Mustache and Marked. It primary designed as development platform;
@@ -38,7 +36,7 @@ Support regular markdown files in components folders and process it as guideline
 ### Installing
 
 ```
-npm install fret2buzz/atlas-guide#commit
+npm install guide201
 ```
 
 ### Configuring
