@@ -384,9 +384,6 @@ body {
 .atlas-toc__ln:hover, .atlas-toc__ln:focus {
 	color: #0a0e10;
 }
-.atlas-toc__ln:active {
-	color: hsl(38, 92%, 60%);
-}
 .atlas-toc__ln_1 {
 	font-size: 14px;
 	font-weight: bold;

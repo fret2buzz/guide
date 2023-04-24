@@ -29,7 +29,7 @@
 }
 .atlas-search__input {
 	-webkit-appearance: none;
-	background: transparent;
+	background: hsl(0, 0%, 100%);
 	border: 1px solid hsl(0, 0%, 87%);
 	border-radius: 5px;
 	box-sizing: border-box;
@@ -43,7 +43,7 @@
 	width: 100%;
 }
 .atlas-search__input:focus {
-	background: #e6e6e6;
+	background: hsl(0, 0%, 100%);
 }
 .atlas-search__input::-webkit-search-cancel-button, .atlas-search__input::-webkit-search-decoration {
 	display: none;
@@ -298,26 +298,25 @@
 	display: none;
 }
 
-.js-searching .atlas-nav__ln {
-	color: #bfbfbf;
-	cursor: default;
-	pointer-events: none;
-}
-.js-searching .atlas-nav__ln._category svg {
-	color: #bfbfbf;
-}
-
 .js-found .atlas-nav__ln {
 	color: #bfbfbf;
 	cursor: default;
-	display: none;
+	font-size: 0;
+	padding: 0 !important;
 	pointer-events: none;
+}
+.js-found .atlas-nav__ln svg {
+	display: none;
 }
 .js-found .atlas-nav__ln.js-relevant {
 	color: hsl(210, 0%, 35%);
 	cursor: pointer;
-	display: block;
+	font-size: 0.9rem;
+	padding: 5px 0 5px 40px !important;
 	pointer-events: initial;
+}
+.js-found .atlas-nav__ln.js-relevant svg {
+	display: block;
 }
 .js-found .atlas-nav__ln.js-relevant:hover, .js-found .atlas-nav__ln.js-relevant:focus {
 	color: black;

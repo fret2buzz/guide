@@ -135,33 +135,30 @@
 	}
 }
 
-.js-searching {
-	.atlas-nav__ln {
-		color: lighten($atlas-color-text, 40%);
-		cursor: default;
-		pointer-events: none;
-
-		&._category {
-			svg {
-				color: lighten($atlas-color-text, 40%);
-			}
-		}
-	}
-}
-
 .js-found {
 	.atlas-nav__ln {
 		color: lighten($atlas-color-text, 40%);
 		cursor: default;
-		display: none;
+		font-size: 0;
+		padding: 0 !important;
 		pointer-events: none;
+
+		svg {
+			display: none;
+		}
+
 	}
 
 	.atlas-nav__ln.js-relevant {
 		color: $atlas-color-text;
 		cursor: pointer;
-		display: block;
+		font-size: 0.9rem;
+		padding: 5px 0 5px ($space-md-atlas * 2) !important;
 		pointer-events: initial;
+
+		svg {
+			display: block;
+		}
 
 		&:hover,
 		&:focus {
