@@ -28,7 +28,6 @@ window.onload = function() {
 
         function search(event) {
             let searchFunc = debounce(() => {
-                console.log('search');
                 const term = event.target.value;
                 window.sessionStorage.setItem('searchTerm', term);
                 if (!term) {
@@ -54,14 +53,14 @@ window.onload = function() {
 
         function runSearch(term) {
             links.forEach(link => {
-                if (link.getAttribute('href') === '') {
+                if (!link.getAttribute('href')) {
                     return;
                 }
                 const elementText = link.textContent;
 
                 if (term.length && ~elementText.indexOf(term)) {
                     asidePanel.classList.add(hasResults);
-                //links[0].focus();
+                    //links[0].focus();
                     link.classList.add(isRelevant);
                 } else {
                     link.classList.remove(isRelevant);
