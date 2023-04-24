@@ -18,6 +18,7 @@
     "npm": ">=8.19"
   },
   "dependencies": {
+    "fancy-log": "^2.0.0",
     "lorem-ipsum": "^2.0.8",
     "marked": "^4.2.12",
     "mustache": "^4.2.0",
