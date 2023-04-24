@@ -1,6 +1,6 @@
 {
   "name": "guide201",
-  "version": "2.3.6",
+  "version": "2.3.7",
   "license": "MIT",
   "description": "Atlas is living style-guides & pattern library static site generator with extensive CSS monitoring and components info that could be used virtually with any scss/css project",
   "keywords": [
@@ -14,8 +14,8 @@
     "atlas"
   ],
   "engines": {
-    "node": ">=18",
-    "npm": ">=8.19"
+    "node": ">=16",
+    "npm": ">=8.11"
   },
   "dependencies": {
     "fancy-log": "^2.0.0",
@@ -37,7 +37,7 @@
     "gulp-postcss": "9.0.1",
     "gulp-sass": "5.1.0",
     "gulp-sourcemaps": "3.0.0",
-    "snyk": "1.1109.0",
+    "@snyk/protect": "^1.657.0",
     "stylelint": "15.2.0",
     "stylelint-order": "6.0.2",
     "stylelint-scss": "4.4.0"
@@ -62,8 +62,8 @@
     "version": "npm run build && git add -A assets",
     "postversion": "git push && git push --tags",
     "debug": "node --nolazy --inspect-brk=9229 ./bin/atlas-guide --build=.atlasrc.current.json",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "author": "fret2buzz, base dimanech/atlas-guide",
   "snyk": true
