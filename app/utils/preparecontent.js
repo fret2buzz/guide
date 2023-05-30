@@ -23,7 +23,7 @@ module.exports = function(atlasConfig, projectTree) {
             page = renderedPageContent(component.src, {'title': component.title});
             content = page.content;
             tableOfContent = page.toc;
-            path = component.src.split('\\scss\\')[1];
+            path = component.src.split('scss')[1];
         }
 
         switch (component.type) {
